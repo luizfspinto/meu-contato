@@ -1,0 +1,236 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/*variaveis*/
+:root {
+  --text-color: #ffffff;
+  --bg-mobile: url(./assets/bg-mobile.jpg);
+  --stroke-color: rgba(255, 255, 255, 0.5);
+  --surface-color: rgba(255, 255, 255, 0.1);
+  --surface-color-hover: rgba(255, 255, 255, 0.05);
+  --hightlight-color: rgba(255, 255, 255, 0.2);
+  --switch-bg-url: url(./assets/moon-stars.svg);
+}
+
+.light {
+  --text-color: black;
+  --bg-mobile: url(./assets/bg-mobile-light.jpg);
+  --stroke-color: rgba(0, 0, 0, 0.5);
+  --surface-color: rgba(255, 255, 255, 0.05);
+  --surface-color-hover: rgba(0, 0, 0, 0.02);
+  --hightlight-color: rgba(0, 0, 0, 0.11);
+  --switch-bg-url: url(./assets/sun-stars.svg);
+}
+
+body {
+  /*
+  background-image: url(./assets/bg-mobile.jpg);
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: cover;
+  */
+
+  /*Propriedades abreviadas*/
+  background: var(--bg-mobile) no-repeat top center/cover;
+  height: 100vh;
+  overflow-x: hidden;
+}
+
+body * {
+  font-family: "Inter", sans-serif;
+  color: var(--text-color);
+}
+
+.paragraph {
+  font-size: 0.85rem;
+  margin-top: 9px;
+}
+
+
+img {
+  border-radius: 50%;
+}
+ ion-icon {
+  font-size: 20px;
+  margin-bottom: -4px;
+ }
+
+#container {
+  width: 100%;
+  max-width: 500px;
+  height: 712px;
+  margin: 10px auto 0px;
+  padding: 24px;
+}
+
+/*Profile*/
+#profile {
+  text-align: center; /*Define o posicionamento dos seus filhos*/
+  padding: 24px;
+}
+
+#profile img {
+  width: 112px;
+}
+
+#profile p {
+  margin-top: 8px;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+/*Botão de troca de tema - switch*/
+#switch {
+  position: relative;
+  width: 64px;
+  margin: 4px auto;
+}
+
+#switch button {
+  width: 32px;
+  height: 32px;
+  background: #ffffff var(--switch-bg-url) no-repeat center;
+  border: none;
+  border-radius: 50%;
+
+  /*posição*/
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+
+  /*Icone de clicar do mouse sobre o botão*/
+  cursor: pointer;
+
+  /*Animation*/
+  animation: slide-back 0.5s;
+}
+
+#switch button:hover {
+  outline: 8px solid var(--hightlight-color);
+}
+
+#switch span {
+  width: 64px;
+  height: 24px;
+  background: var(--surface-color);
+  border: 1px solid var(--stroke-color);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  display: block;
+  border-radius: 9999px;
+}
+
+/*Mudar a posição do botão, dark para ligth*/
+.light #switch button {
+  animation: slide-in 0.4s forwards;
+}
+
+/*Lista de links*/
+ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px 0px;
+}
+
+a {
+  display: block !important;
+  text-align: center;
+}
+
+ul li a {
+  display: flex;
+  align-items: center; /*Alinha os itens ao centro vertical, através do display-flex*/
+  justify-content: center; /*Alinha os itens ao centro horizontal, através do display-flex*/
+  padding: 16px 24px;
+  background: var(--surface-color);
+  border: 1px solid var(--stroke-color);
+  border-radius: 8px;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.5s;
+}
+
+/*pseudo-selector*/
+ul li a:hover {
+  background: var(--surface-color-hover);
+  border: 1.5px solid var(--text-color);
+}
+
+/*icones - social links*/
+#social-links {
+  display: flex;
+  padding: 24px 0;
+  font-size: 24px;
+  justify-content: center;
+}
+
+.rs {
+  color: rgb(92, 193, 240);
+  font-size: 25px;
+  margin-right: 15px;
+}
+
+#social-links a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  border-radius: 50%;
+  transition: 0.2s;
+}
+
+/*pseudo-selector social-links*/
+#social-links a:hover {
+  background: var(--hightlight-color);
+}
+
+/*Footer*/
+#footer {
+  padding: 24px 0;
+  text-align: center;
+}
+
+#footer p {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+}
+
+/*Media queries - celular*/
+@media (min-width: 700px) {
+  :root {
+    --bg-mobile: url(./assets/bg-desktop.jpg);
+  }
+
+  .light {
+    --bg-mobile: url(./assets/bg-light-desktop.jpg);
+  }
+}
+
+/*Animation*/
+@keyframes slide-in {
+  from {
+    left: 0;
+  }
+  to {
+    left: 50%;
+  }
+}
+
+@keyframes slide-back {
+  from {
+    left: 50%;
+  }
+  to {
+    left: 0;
+  }
+}
